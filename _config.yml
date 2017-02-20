@@ -1,0 +1,32 @@
+# Website
+baseurl:
+url: http://localhost:4000
+title: Cool colors
+description: >
+  Cool colors in hexadecimal and RGB for your projects.
+
+# Lang
+lang: en
+
+# Social
+github: https://github.com/cba85/coolcolors
+
+# Legal
+author: Clément Barbaza
+author_url: https://www.clementbarbaza.com
+
+# Google Analytics
+google_analytics: UA-XXXXXXXX-X
+
+# Assets
+primer_version: 4.0.1
+
+# Build settings
+timezone: Europe/Paris
+markdown: kramdown
+gems:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+exclude:
+  - Gemfile
+  - Gemfile.lock

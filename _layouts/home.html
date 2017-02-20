@@ -1,0 +1,26 @@
+---
+layout: default
+---
+
+ <h1>&#x1F60E; Cool colors</h1>
+
+ <p class="lead">{{ site.description | escape }}</p>
+
+{% for color in site.data.colors %}
+    {% assign loopindex = forloop.index | modulo: 5 %}
+    {% if loopindex == 1 %}
+        <div class="columns">
+    {% endif %}
+    <div class="one-fifth column">
+        <div style="background-color: {{ color.hexadecimal }};" class="p-5">&nbsp;</div>
+        <div class="text-center">
+            <strong>{{ color.name }}</strong><br>
+            <small>{{ color.hexadecimal }}</small><br>
+            <small>{{ color.red }},{{ color.blue }},{{ color.blue }}</small>
+        </div>
+    </div>
+    {% if loopindex == 0 %}
+        </div>
+        <br>
+    {% endif %}
+{% endfor %}
