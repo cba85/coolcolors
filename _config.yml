@@ -1,6 +1,6 @@
 # Website
 baseurl:
-url: http://localhost:4000
+url: https://cba85.github.io/coolcolors/
 title: Cool colors
 description: >
   Cool colors in hexadecimal and RGB for your projects.

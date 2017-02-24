@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-ruby RUBY_VERSION
+ruby '2.3.1'
 
 #gem "jekyll", "3.3.1"
 
@@ -11,4 +11,5 @@ gem "github-pages", group: :jekyll_plugins
 group :jekyll_plugins do
    gem "jekyll-seo-tag"
    gem "jekyll-sitemap"
+   gem 'html-proofer'
 end
