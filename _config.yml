@@ -18,9 +18,6 @@ author_url: https://www.clementbarbaza.com
 # Google Analytics
 google_analytics: UA-45415607-2
 
-# Assets
-primer_version: 4.0.1
-
 # Build settings
 timezone: Europe/Paris
 markdown: kramdown

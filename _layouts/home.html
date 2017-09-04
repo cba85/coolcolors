@@ -2,25 +2,38 @@
 layout: default
 ---
 
- <h1>&#x1F60E; Cool colors</h1>
+ <h1>Cool colors &#x1F60E;</h1>
 
- <p class="lead">{{ site.description | escape }}</p>
+ <p class="lead mb-5">{{ site.description | escape }}</p>
 
 {% for color in site.data.colors %}
-    {% assign loopindex = forloop.index | modulo: 5 %}
+    {% assign loopindex = forloop.index | modulo: 4 %}
     {% if loopindex == 1 %}
-        <div class="columns">
+        <div class="row">
     {% endif %}
-    <div class="one-fifth column">
-        <div style="background-color: {{ color.hexadecimal }};" class="p-5">&nbsp;</div>
-        <div class="text-center">
-            <strong>{{ color.name }}</strong><br>
-            <small>{{ color.hexadecimal }}</small><br>
-            <small>{{ color.red }},{{ color.blue }},{{ color.blue }}</small>
-        </div>
+    <div class="col-sm-3">
+        <div class="card">
+            <div class="color" style="background-color: {{ color.hexadecimal }};">&nbsp;</div>
+      <div class="card-body">
+         <p class="card-text text-center"><strong>{{ color.name }}</strong></p>
+        <table class="table table-sm">
+            <tbody>
+                <tr>
+                    <td>Hex</td>
+                    <td class="text-right"><pre class="pt-1 mb-0"><code>{{ color.hexadecimal }}</code></pre></td>
+                </tr>
+                <tr>
+                    <td>RGB</td>
+                    <td class="text-right"><pre class="pt-1 mb-0"><code>{{ color.red }},{{ color.blue }},{{ color.blue }}</code></pre></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
     </div>
     {% if loopindex == 0 %}
         </div>
         <br>
     {% endif %}
 {% endfor %}
+</div>
