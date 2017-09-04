@@ -1,16 +1,11 @@
-<<<<<<< HEAD
-<script src="{{ "assets/jquery-3.2.1.slim.min.js"| relative_url }}"></script>
+<script src="{{ "assets/jquery-3.2.1.min.js"| relative_url }}"></script>
 <script src="{{ "assets/fuse.min.js"| relative_url }}"></script>
-=======
-<script src="{{ site.baseurl }}/assets/jquery-3.2.1.min.js"></script>
-<script src="{{ site.baseurl }}/assets/fuse.min.js"></script>
->>>>>>> parent of b58ac10... relative urls
 <script>
 
     function getColors() {
         var search = $('#search').val();
         var results;
-        $.getJSON('{{ site.baseurl }}/assets/colors.json', function(colors) {
+        $.getJSON('{{ "assets/colors.json"| relative_url }}', function(colors) {
             if (search.length == 0) {
                 results = colors;
             } else {
