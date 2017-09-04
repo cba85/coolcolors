@@ -12,4 +12,9 @@ Colors list source: https://github.com/edent/RGB_Colours.
 
 ## Libraries
 
-This website uses [Jekyll](https://jekyllrb.com/) and [Primer CSS](http://primercss.io/).
+This website uses:
+
+- [Jekyll](https://jekyllrb.com/)
+- [Bootstrap](https://getbootstrap.com)
+- [jQuery](https://jquery.com)
+- [Fuse](http://fusejs.io)
