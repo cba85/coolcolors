@@ -5,7 +5,7 @@
     function getColors() {
         var search = $('#search').val();
         var results;
-        $.getJSON('/assets/colors.json', function(colors) {
+        $.getJSON('{{ site.baseurl }}/assets/colors.json', function(colors) {
             if (search.length == 0) {
                 results = colors;
             } else {
