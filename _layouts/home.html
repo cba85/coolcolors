@@ -4,15 +4,20 @@ layout: default
 
  <h1>Cool colors &#x1F60E;</h1>
 
- <p class="lead mb-5">{{ site.description | escape }}</p>
+ <p class="lead mb-4">{{ site.description | escape }}</p>
 
+  <div class="input-group input-group-lg mb-5">
+      <input type="text" id="search" class="form-control" placeholder="Search for a color..." aria-label="Search for a color...">
+      <span class="input-group-btn">
+        <a class="btn btn-secondary" href="#" id="reset">Reset</a>
+      </span>
+</div>
+
+<div class="row colors">
 {% for color in site.data.colors %}
     {% assign loopindex = forloop.index | modulo: 4 %}
-    {% if loopindex == 1 %}
-        <div class="row">
-    {% endif %}
-    <div class="col-sm-3">
-        <div class="card">
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+        <div class="card mb-4">
             <div class="color" style="background-color: {{ color.hexadecimal }};">&nbsp;</div>
       <div class="card-body">
          <p class="card-text text-center"><strong>{{ color.name }}</strong></p>
@@ -24,16 +29,12 @@ layout: default
                 </tr>
                 <tr>
                     <td>RGB</td>
-                    <td class="text-right"><pre class="pt-1 mb-0"><code>{{ color.red }},{{ color.blue }},{{ color.blue }}</code></pre></td>
+                    <td class="text-right"><pre class="pt-1 mb-0"><code>{{ color.red }},{{ color.blue }},{{ color.green }}</code></pre></td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
     </div>
-    {% if loopindex == 0 %}
-        </div>
-        <br>
-    {% endif %}
 {% endfor %}
 </div>

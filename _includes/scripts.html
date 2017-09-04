@@ -1,0 +1,40 @@
+<script src="{{ site.baseurl }}/assets/jquery-3.2.1.min.js"></script>
+<script src="{{ site.baseurl }}/assets/fuse.min.js"></script>
+<script>
+
+    function getColors() {
+        var search = $('#search').val();
+        var results;
+        $.getJSON('/assets/colors.json', function(colors) {
+            if (search.length == 0) {
+                results = colors;
+            } else {
+                var options = {
+                    keys: ['name'],
+                };
+                var fuse = new Fuse(colors, options);
+                results = fuse.search(search);
+            }
+            $('.colors').html('');
+            for (var k in results) {
+                var color = results[k];
+                var card = '<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3"><div class="card mb-4"><div class="color" style="background-color: ' + color.hexadecimal + ';">&nbsp;</div><div class="card-body"><p class="card-text text-center"><strong>' + color.name + '</strong></p><table class="table table-sm"><tbody><tr><td>Hex</td><td class="text-right"><pre class="pt-1 mb-0"><code>' + color.hexadecimal + '</code></pre></td></tr><tr><td>RGB</td><td class="text-right"><pre class="pt-1 mb-0"><code>' + color.red + ',' + color.blue + ',' + color.green + '<code></pre></td></tr></tbody></table></div></div></div>';
+                $('.colors').append(card);
+            }
+        });
+    }
+
+    $(document).ready(function() {
+
+        $('#search').on('keyup', function(e) {
+            getColors();
+        });
+
+        $('#reset').on('click', function(e) {
+            e.preventDefault();
+            $('#search').val('');
+            getColors();
+        });
+
+    });
+</script>
