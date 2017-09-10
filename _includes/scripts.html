@@ -1,7 +1,6 @@
 <script src="{{ "assets/jquery-3.2.1.min.js"| relative_url }}"></script>
 <script src="{{ "assets/fuse.min.js"| relative_url }}"></script>
 <script>
-
     function displayColors(colors) {
         $('.colors').html('');
         for (var k in colors) {
@@ -11,33 +10,36 @@
         }
     }
 
-    function getColors() {
+    function getColors(colorsList) {
         var search = $('#search').val();
-        $.getJSON('{{ "assets/colors.json"| relative_url }}', function(colors) {
             if (search.length == 0) {
-                displayColors(colors);
+                displayColors(colorsList);
             }
             if (search.length >= 3) {
                 var options = {
                     keys: ['name'],
                 };
-                var fuse = new Fuse(colors, options);
+                var fuse = new Fuse(colorsList, options);
                 colors = fuse.search(search);
                 displayColors(colors);
             }
-        });
     }
 
     $(document).ready(function() {
 
+        var colorsList;
+        $.getJSON('{{ "assets/colors.json"| relative_url }}', function(colors) {
+                colorsList = colors;
+            });
+
         $('#search').on('keyup', function(e) {
-            getColors();
+            getColors(colorsList);
         });
 
         $('#reset').on('click', function(e) {
             e.preventDefault();
             $('#search').val('');
-            getColors();
+            getColors(colorsList);
         });
 
     });
