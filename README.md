@@ -16,5 +16,4 @@ This website uses:
 
 - [Jekyll](https://jekyllrb.com/)
 - [Bootstrap](https://getbootstrap.com)
-- [jQuery](https://jquery.com)
 - [Fuse](http://fusejs.io)
