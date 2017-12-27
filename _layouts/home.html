@@ -9,11 +9,13 @@ layout: default
   <div class="input-group input-group-lg mb-5">
       <input type="text" id="search" class="form-control" placeholder="Search for a color..." aria-label="Search for a color...">
       <span class="input-group-btn">
-        <a class="btn btn-secondary" href="" id="reset">Reset</a>
+        <a class="btn btn-secondary" href="#" id="reset">Reset</a>
       </span>
 </div>
 
-<div class="row colors">
+<div class="row" id="selected-colors" style="display:none"></div>
+
+<div class="row" id="all-colors">
 {% for color in site.data.colors %}
     {% assign loopindex = forloop.index | modulo: 4 %}
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">

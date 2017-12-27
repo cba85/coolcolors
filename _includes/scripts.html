@@ -1,46 +1,74 @@
-<script src="{{ "assets/jquery-3.2.1.min.js"| relative_url }}"></script>
 <script src="{{ "assets/fuse.min.js"| relative_url }}"></script>
 <script>
-    function displayColors(colors) {
-        $('.colors').html('');
+
+    /*
+     * Get url
+     */
+    function getUrl(url){
+        var Httpreq = new XMLHttpRequest();
+        Httpreq.open("GET",url,false);
+        Httpreq.send(null);
+        return Httpreq.responseText;
+    }
+
+    /*
+     * Display all colors
+     */
+    function displayAllColors(divAllColors, divSelectedColors) {
+        divSelectedColors.style.display = 'none';
+        divSelectedColors.innerHTML = '';
+        divAllColors.style.display = '';
+    }
+
+    /*
+     * Display selected colors
+     */
+    function displaySelectedColors(divAllColors, divSelectedColors, colors) {
+        divAllColors.style.display = 'none';
+        divSelectedColors.innerHTML = '';
         for (var k in colors) {
             var color = colors[k];
             var card = '<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3"><div class="card mb-4"><div class="color" style="background-color: ' + color.hexadecimal + ';">&nbsp;</div><div class="card-body"><p class="card-text text-center"><strong>' + color.name + '</strong></p><table class="table table-sm"><tbody><tr><td>Hex</td><td class="text-right"><pre class="pt-1 mb-0"><code>' + color.hexadecimal + '</code></pre></td></tr><tr><td>RGB</td><td class="text-right"><pre class="pt-1 mb-0"><code>' + color.red + ',' + color.blue + ',' + color.green + '<code></pre></td></tr></tbody></table></div></div></div>';
-            $('.colors').append(card);
+            divSelectedColors.innerHTML += card;
         }
+        divSelectedColors.style.display = '';
     }
 
-    function getColors(colorsList) {
-        var search = $('#search').val();
-            if (search.length == 0) {
-                displayColors(colorsList);
-            }
-            if (search.length >= 3) {
-                var options = {
-                    keys: ['name'],
-                };
-                var fuse = new Fuse(colorsList, options);
-                colors = fuse.search(search);
-                displayColors(colors);
-            }
-    }
+    document.addEventListener("DOMContentLoaded", function(event) {
 
-    $(document).ready(function() {
+        // Get colors div
+        var divAllColors = document.getElementById('all-colors');
+        var divSelectedColors = document.getElementById('selected-colors');
 
+        // Get colors list
         var colorsList;
-        $.getJSON('{{ "assets/colors.json"| relative_url }}', function(colors) {
-                colorsList = colors;
-            });
+        var url = '{{ "assets/colors.json"| relative_url }}';
+        colorsList = JSON.parse(getUrl(url));
 
-        $('#search').on('keyup', function(e) {
-            getColors(colorsList);
+        // Search for a color
+        var search = document.getElementById('search');
+        search.addEventListener("keyup", function() {
+            var input = search.value;
+            var size = input.length;
+            if (size == 0) {
+                displayAllColors(divAllColors, divSelectedColors);
+            }
+            if (size >= 3) {
+                var options = { keys: ['name'] };
+                var fuse = new Fuse(colorsList, options);
+                var colors = fuse.search(input);
+                displaySelectedColors(divAllColors, divSelectedColors, colors);
+            }
         });
 
-        $('#reset').on('click', function(e) {
-            e.preventDefault();
-            $('#search').val('');
-            getColors(colorsList);
+        // Reset colors
+        var reset = document.getElementById('reset');
+        reset.addEventListener("click", function() {
+            search.value = '';
+            displayAllColors(divAllColors, divSelectedColors);
+            return false;
         });
 
     });
+
 </script>
