@@ -4,7 +4,7 @@
 */
 function getUrl(url){
     var Httpreq = new XMLHttpRequest();
-    Httpreq.open("GET",url,false);
+    Httpreq.open("GET", url, false);
     Httpreq.send(null);
     return Httpreq.responseText;
 }
@@ -38,8 +38,9 @@ var divSelectedColors = document.getElementById('selected-colors');
 
 // Get colors list
 var colorsList;
-var url = '/assets/colors.json';
+var url = 'assets/colors.json';
 colorsList = JSON.parse(getUrl(url));
+console.log(colorsList);
 
 // Search for a color
 var search = document.getElementById('search');
