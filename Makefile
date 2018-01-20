@@ -6,7 +6,7 @@ serve:
 
 # ASSETS
 
-CSS_FILES = assets/bootstrap-4.0.0-beta2/css/bootstrap.min.css \
+CSS_FILES = assets/bootstrap-4.0.0/css/bootstrap.min.css \
 	_site/assets/main.css
 
 JS_FILES = assets/fuse.min.js \
