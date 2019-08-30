@@ -6,6 +6,13 @@ Cool colors in hexadecimal and RGB for your projects.
 
 ![](assets/screenshot.png)
 
+## Install
+
+```bash
+$ bundle install
+$ bundle exec jekyll serve
+```
+
 ## Source
 
 Colors list source: https://github.com/edent/RGB_Colours.
