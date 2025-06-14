@@ -1,9 +1,3 @@
-# SERVE
-
-## serve - Start a simple jekyll server.
-serve:
-	jekyll serve --watch
-
 # ASSETS
 
 CSS_FILES = assets/bootstrap-4.0.0/css/bootstrap.min.css \

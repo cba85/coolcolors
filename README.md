@@ -1,7 +1,5 @@
 # Cool colors
 
-[![Build Status](https://img.shields.io/travis/cba85/coolcolors/master.svg?style=flat-square)](https://travis-ci.org/cba85/coolcolors)
-
 Cool colors in hexadecimal and RGB for your projects.
 
 ![](assets/screenshot.png)
